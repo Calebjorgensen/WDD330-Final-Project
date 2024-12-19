@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Account Page</title>
+  <link rel="stylesheet" href="styles/style.css">
+</head>
+<body>
+  <nav>
+    <ul>
+      <li><a href="index.html">Sign Up</a></li>
+      <li><a href="login.html">Login</a></li>
+    </ul>
+  </nav>
+
+  <div class="account-container">
+    <h2>Welcome, <span id="accountUsername"></span>!</h2>
+    <p><strong>Email:</strong> <span id="accountEmail"></span></p>
+    <p><strong>Username:</strong> <span id="accountName"></span></p>
+  </div>
+
+  <script>
+    // Load user data from sessionStorage
+    const loggedInUser = JSON.parse(sessionStorage.getItem("loggedInUser"));
+
+    if (!loggedInUser) {
+      // Redirect to login if no user is logged in
+      window.location.href = "login.html";
+    } else {
+      // Display user information
+      document.getElementById("accountUsername").textContent = loggedInUser.username;
+      document.getElementById("accountEmail").textContent = loggedInUser.email;
+      document.getElementById("accountName").textContent = loggedInUser.username;
+    }
+  </script>
+</body>
+</html>
